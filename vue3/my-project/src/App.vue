@@ -1,17 +1,27 @@
+<!-- <script setup> 속성은 **더 간단하고 직관적인 문법(syntax sugar)**을 제공해주는 방식. -->
+
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
+import { ref, onMounted } from "vue";
+
+let count = ref(0); // 상태변수 초기값
+let title = "Hello World"; // 변수
+
+onMounted(() => {
+  console.log("mounted");
+});
+
+// 메서드 정의
+const increaseCount = () => {
+  count.value++;
+};
 </script>
 
 <template>
   <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <h1>{{ title }}</h1>
+    <button @click="increaseCount">count++</button>
+    <p>{{ count }}</p>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style></style>
+<style scoped></style>
