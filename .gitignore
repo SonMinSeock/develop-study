@@ -1,0 +1,38 @@
+# macOS
+.DS_Store
+
+# Node (Vue)
+node_modules/
+dist/
+.env
+.env.*.local
+
+# Flutter
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+coverage/
+.idea/
+android/.gradle/
+ios/Flutter/Flutter.framework/
+ios/Flutter/Flutter.podspec
+ios/Pods/
+ios/.symlinks/
+ios/Runner.xcworkspace/
+ios/DerivedData/
+.flutter-plugins
+.vscode/
+
+# 기타 에디터 설정
+*.log
+*.swp
+*.swo
+*.tmp
+
+# 프로젝트 백업파일
+*.bak
+*.orig
+*.old
