@@ -1,4 +1,5 @@
 <script setup>
+import About from "./components/About.vue";
 import Portfolio from "./components/Portfolio.vue";
 import Title from "./components/Title.vue";
 </script>
@@ -36,6 +37,7 @@ import Title from "./components/Title.vue";
   </nav>
   <Title />
   <Portfolio />
+  <About />
 </template>
 
 <style scoped lang="scss"></style>
