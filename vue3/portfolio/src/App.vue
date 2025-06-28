@@ -1,41 +1,11 @@
 <script setup>
-import About from "./components/About.vue";
-import Portfolio from "./components/Portfolio.vue";
-import TitlePage from "./components/TitlePage.vue";
+import data from "./assets/portfolio";
+import Navbar from "./components/Navbar.vue";
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark">
-    <div class="container-fluid">
-      Add commentMore actions
-      <a class="navbar-brand" href="#">Son MinSeok</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <router-link class="nav-link active" aria-current="page" to="/">Home</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/portfolio">Portfolio</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/about">About</router-link>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <router-view />
+  <Navbar />
+  <router-view :data="data" />
 </template>
 
 <style scoped lang="scss"></style>
