@@ -1,7 +1,7 @@
 <script setup>
 import About from "./components/About.vue";
 import Portfolio from "./components/Portfolio.vue";
-import Title from "./components/Title.vue";
+import TitlePage from "./components/TitlePage.vue";
 </script>
 
 <template>
@@ -23,21 +23,19 @@ import Title from "./components/Title.vue";
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <router-link class="nav-link active" aria-current="page" to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Portfolio</a>
+            <router-link class="nav-link" to="/portfolio">Portfolio</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <router-link class="nav-link" to="/about">About</router-link>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <Title />
-  <Portfolio />
-  <About />
+  <router-view />
 </template>
 
 <style scoped lang="scss"></style>
