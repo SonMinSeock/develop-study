@@ -1,7 +1,7 @@
 <script setup></script>
-<template lang="">
+<template>
   <main class="container">
-    <h2>Hello Vue3</h2>
+    <RouterView></RouterView>
   </main>
 </template>
 <style scoped></style>
