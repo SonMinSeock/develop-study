@@ -1,11 +1,11 @@
 <script setup>
+import MainComp from "./components/MainComp.vue";
 import Navbar from "./components/Navbar.vue";
-import Searchbar from "./components/Searchbar.vue";
 </script>
 
 <template>
   <Navbar />
-  <Searchbar />
+  <MainComp />
 </template>
 
 <style lang="scss" scoped></style>
