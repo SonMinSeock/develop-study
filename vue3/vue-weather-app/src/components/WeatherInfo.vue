@@ -1,10 +1,19 @@
-<script setup></script>
+<script setup>
+function kelvinToCelsius(kelvin) {
+  return (kelvin - 273.15).toFixed(1);
+}
+const props = defineProps({
+  weatherData: Object,
+});
+</script>
 <template>
   <div class="weather-info">
-    <div class="icon">icon</div>
-    <div class="temp">temp</div>
-    <div class="text">text</div>
-    <div class="location">location</div>
+    <div class="icon">
+      <img :src="`http://openweathermap.org/img/wn/${props.weatherData.icon}@2x.png`" :alt="props.weatherData.icon" />
+    </div>
+    <div class="temp">{{ `${kelvinToCelsius(props.weatherData.temp)}&deg;` }}</div>
+    <div class="text">{{ props.weatherData.text }}</div>
+    <div class="location">{{ props.weatherData.location }}</div>
   </div>
 </template>
 <style lang="scss" scoped>
