@@ -8,5 +8,8 @@ export default createStore({
   },
   mutations: {
     // mutataions (데이터 변경)
+    addCount(state, payload) {
+      state.count += 1 + payload;
+    },
   },
 });

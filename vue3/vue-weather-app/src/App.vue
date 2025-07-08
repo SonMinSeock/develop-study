@@ -41,6 +41,7 @@ const onSearchCity = (city) => {
 
 <template>
   <p>count: {{ $store.state.count }}</p>
+  <button @click="$store.commit('addCount', 10)">count++</button>
   <Navbar />
   <MainComp :weatherData="weatherData" @onSearchCity="onSearchCity" />
 </template>
