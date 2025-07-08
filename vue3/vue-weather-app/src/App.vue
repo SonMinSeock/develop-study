@@ -40,6 +40,7 @@ const onSearchCity = (city) => {
 </script>
 
 <template>
+  <p>count: {{ $store.state.count }}</p>
   <Navbar />
   <MainComp :weatherData="weatherData" @onSearchCity="onSearchCity" />
 </template>
