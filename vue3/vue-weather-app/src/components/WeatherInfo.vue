@@ -13,7 +13,7 @@ const props = defineProps({
     </div>
     <div class="temp">{{ `${kelvinToCelsius(props.weatherData.temp)}&deg;` }}</div>
     <div class="text">{{ props.weatherData.text }}</div>
-    <div class="location">{{ props.weatherData.location }}</div>
+    <div class="location">{{ props.weatherData.city }}</div>
   </div>
 </template>
 <style lang="scss" scoped>

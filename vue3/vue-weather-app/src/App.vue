@@ -12,8 +12,8 @@ const weatherData = ref({
   city: "seoul",
 });
 
-// 앱이 실행되면 날씨 데이터 가져오기
-onMounted(() => {
+// HTTP GET 요청 날씨 데이터 불러오기
+const getWeather = () => {
   console.log("Mounted!");
   const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${weatherData.value.city}&appid=1b8d6583611cf270344d65ff3f3fc115`;
   fetch(API_URL)
@@ -24,13 +24,24 @@ onMounted(() => {
       weatherData.value.text = data.weather[0].description;
       weatherData.value.location = data.sys.country;
       weatherData.value.city = data.name;
-    });
+    })
+    .catch("에러가 발생했습니다. 다시 시도해 주세요.");
+};
+
+// 앱이 실행되면 날씨 데이터 가져오기
+onMounted(() => {
+  getWeather();
 });
+
+const onSearchCity = (city) => {
+  weatherData.value.city = city;
+  getWeather();
+};
 </script>
 
 <template>
   <Navbar />
-  <MainComp :weatherData="weatherData" />
+  <MainComp :weatherData="weatherData" @onSearchCity="onSearchCity" />
 </template>
 
 <style lang="scss" scoped></style>

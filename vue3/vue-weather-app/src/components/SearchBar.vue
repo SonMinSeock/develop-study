@@ -1,15 +1,21 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+
+const inputText = ref("");
+const emits = defineEmits(["onSearchCity"]); // emit 정의, 부모에게 데이터 보낼 경우 사용
+</script>
 <template>
   <div class="search-bar">
-    <form>
+    <form @submit.prevent>
       <div class="form-group">
-        <input type="search" placeholder="지역을 입력해 주세요" />
-        <button>
+        <input type="search" @input="inputText = $event.target.value" placeholder="지역을 입력해 주세요" />
+        <button @click="$emit('onSearchCity', inputText)">
           <font-awesome-icon class="icon" :icon="['fas', 'magnifying-glass']" />
         </button>
       </div>
     </form>
   </div>
+  {{ inputText }}
 </template>
 
 <style lang="scss" scoped>

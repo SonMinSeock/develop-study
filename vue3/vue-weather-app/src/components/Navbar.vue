@@ -14,6 +14,7 @@
   padding: 20px;
   display: flex;
   justify-content: end;
+  margin-bottom: 1rem;
 
   button {
     border: none;
