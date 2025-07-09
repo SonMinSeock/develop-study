@@ -9,11 +9,14 @@ const props = defineProps({
 <template>
   <div class="weather-info">
     <div class="icon">
-      <img :src="`http://openweathermap.org/img/wn/${props.weatherData.icon}@2x.png`" :alt="props.weatherData.icon" />
+      <img
+        :src="`http://openweathermap.org/img/wn/${$store.state.weatherData.icon}@2x.png`"
+        :alt="$store.state.weatherData.icon"
+      />
     </div>
-    <div class="temp">{{ `${kelvinToCelsius(props.weatherData.temp)}&deg;` }}</div>
-    <div class="text">{{ props.weatherData.text }}</div>
-    <div class="location">{{ props.weatherData.city }}</div>
+    <div class="temp">{{ `${kelvinToCelsius($store.state.weatherData.temp)}&deg;` }}</div>
+    <div class="text">{{ $store.state.weatherData.text }}</div>
+    <div class="location">{{ $store.state.weatherData.city }}, {{ $store.state.weatherData.location }}</div>
   </div>
 </template>
 <style lang="scss" scoped>

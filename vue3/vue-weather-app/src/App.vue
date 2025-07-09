@@ -14,7 +14,6 @@ const weatherData = ref({
 
 // HTTP GET 요청 날씨 데이터 불러오기
 const getWeather = () => {
-  console.log("Mounted!");
   const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${weatherData.value.city}&appid=1b8d6583611cf270344d65ff3f3fc115`;
   fetch(API_URL)
     .then((res) => res.json())
@@ -40,6 +39,7 @@ const onSearchCity = (city) => {
 </script>
 
 <template>
+  <button @click="$store.dispatch('getWeather')">Action 함수 dispatch로 호출해보기 - getWeather</button>
   <p>count: {{ $store.state.count }}</p>
   <button @click="$store.commit('addCount', 10)">count++</button>
   <Navbar />
