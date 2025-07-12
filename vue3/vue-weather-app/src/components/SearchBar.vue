@@ -9,7 +9,12 @@ const emits = defineEmits(["onSearchCity"]); // emit 정의, 부모에게 데이
     <form @submit.prevent>
       <div class="form-group">
         <input type="search" @input="inputText = $event.target.value" placeholder="지역을 입력해 주세요" />
-        <button @click="$emit('onSearchCity', inputText)">
+        <button
+          @click="
+            $store.commit('onSearchCity', inputText);
+            $store.dispatch('getWeather');
+          "
+        >
           <font-awesome-icon class="icon" :icon="['fas', 'magnifying-glass']" />
         </button>
       </div>

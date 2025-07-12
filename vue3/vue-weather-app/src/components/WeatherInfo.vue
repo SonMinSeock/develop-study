@@ -2,9 +2,6 @@
 function kelvinToCelsius(kelvin) {
   return (kelvin - 273.15).toFixed(1);
 }
-const props = defineProps({
-  weatherData: Object,
-});
 </script>
 <template>
   <div class="weather-info">
