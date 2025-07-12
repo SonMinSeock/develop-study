@@ -20,7 +20,6 @@ const inputText = ref("");
       </div>
     </form>
   </div>
-  {{ inputText }}
 </template>
 
 <style lang="scss" scoped>

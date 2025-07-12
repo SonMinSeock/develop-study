@@ -9,7 +9,6 @@
 
 <style lang="scss" scoped>
 .navbar {
-  background-color: #fff;
   width: 100%;
   padding: 20px;
   display: flex;
