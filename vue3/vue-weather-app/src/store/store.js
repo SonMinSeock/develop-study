@@ -36,7 +36,8 @@ export default createStore({
   actions: {
     // context 전역객체이고 state를 참조하고 있음.
     getWeather(context) {
-      const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${context.state.weatherData.city}&appid=1b8d6583611cf270344d65ff3f3fc115`;
+      const API_KEY = import.meta.env.VITE_API_KEY;
+      const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${context.state.weatherData.city}&appid=${API_KEY}`;
       fetch(API_URL)
         .then((res) => res.json())
         .then((data) => {
