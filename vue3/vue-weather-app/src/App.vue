@@ -1,4 +1,5 @@
 <script setup>
+import About from "./components/About.vue";
 import MainComp from "./components/MainComp.vue";
 import Navbar from "./components/Navbar.vue";
 import { ref, onMounted } from "vue";
@@ -13,9 +14,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <button @click="$store.dispatch('getWeather')">Action 함수 dispatch로 호출해보기 - getWeather</button>
+  <!-- <button @click="$store.dispatch('getWeather')">Action 함수 dispatch로 호출해보기 - getWeather</button> -->
   <Navbar />
-  <MainComp />
+  <div v-if="!$store.state.toggle">
+    <MainComp />
+  </div>
+  <div v-else>
+    <About />
+  </div>
 </template>
 
 <style lang="scss" scoped></style>

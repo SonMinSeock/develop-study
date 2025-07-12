@@ -2,8 +2,8 @@
 import { ref } from "vue";
 
 const inputText = ref("");
-const emits = defineEmits(["onSearchCity"]); // emit 정의, 부모에게 데이터 보낼 경우 사용
 </script>
+
 <template>
   <div class="search-bar">
     <form @submit.prevent>

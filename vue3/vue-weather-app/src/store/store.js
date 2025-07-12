@@ -12,6 +12,7 @@ export default createStore({
       location: "location",
       city: "seoul",
     },
+    toogle: false,
   },
   mutations: {
     // mutataions (데이터 변경)
@@ -27,6 +28,9 @@ export default createStore({
     },
     onSearchCity(state, payload) {
       state.weatherData.city = payload;
+    },
+    onToggle(state) {
+      state.toggle = !state.toggle;
     },
   },
   actions: {
