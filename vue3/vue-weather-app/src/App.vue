@@ -2,21 +2,22 @@
 import About from "./components/About.vue";
 import MainComp from "./components/MainComp.vue";
 import Navbar from "./components/Navbar.vue";
-import { ref, onMounted } from "vue";
-import { useStore } from "vuex";
+import { onMounted } from "vue";
+import { storeToRefs } from "pinia";
+import { useStore } from "./store/store";
 
 const store = useStore();
-
+const { toggle } = storeToRefs(store);
 // 앱이 실행되면 날씨 데이터 가져오기
 onMounted(() => {
-  store.dispatch("getWeather");
+  store.getWeather();
 });
 </script>
 
 <template>
   <!-- <button @click="$store.dispatch('getWeather')">Action 함수 dispatch로 호출해보기 - getWeather</button> -->
   <Navbar />
-  <div v-if="!$store.state.toggle">
+  <div v-if="!toggle">
     <MainComp />
   </div>
   <div v-else>

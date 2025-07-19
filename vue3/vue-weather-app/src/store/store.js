@@ -2,8 +2,8 @@ import { defineStore } from "pinia";
 
 // store 정의하기
 // main 용 store 정의, 여러 store를 만들수 있다,
-const store = defineStore("main", {
-  state: {
+export const useStore = defineStore("main", {
+  state: () => ({
     // 상태 변수 정의
     weatherData: {
       icon: "icon",
@@ -14,7 +14,7 @@ const store = defineStore("main", {
     },
     toggle: false,
     count: 0,
-  },
+  }),
   actions: {
     // 함수 정의
     addCount(payload) {
