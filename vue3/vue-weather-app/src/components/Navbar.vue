@@ -1,7 +1,10 @@
-<script setup></script>
+<script setup>
+import { useStore } from "../store/store";
+const store = useStore();
+</script>
 <template>
   <nav class="navbar">
-    <button class="toggle" @click="$store.commit('onToggle')">
+    <button class="toggle" @click="store.toggleButton()">
       <font-awesome-icon class="icon" :icon="['fas', 'bars-staggered']" />
     </button>
   </nav>

@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from "vue";
+import { useStore } from "../store/store";
+
+const store = useStore();
 
 const inputText = ref("");
 </script>
@@ -11,8 +14,8 @@ const inputText = ref("");
         <input type="search" @input="inputText = $event.target.value" placeholder="지역을 입력해 주세요" />
         <button
           @click="
-            $store.commit('onSearchCity', inputText);
-            $store.dispatch('getWeather');
+            store.onSearchCity(inputText);
+            store.getWeather();
           "
         >
           <font-awesome-icon class="icon" :icon="['fas', 'magnifying-glass']" />
