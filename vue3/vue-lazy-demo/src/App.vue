@@ -18,11 +18,11 @@ const projects = new Array(20).fill(null).map((_, i) => ({
   <div class="container my-5">
     <h4 class="mb-4">Lazy 미적용</h4>
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+    <!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
       <div class="col" v-for="p in projects" :key="p.title">
         <ProjectCardNoLazy v-bind="p" />
       </div>
-    </div>
+    </div> -->
 
     <h4 class="my-4">Lazy 적용</h4>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">

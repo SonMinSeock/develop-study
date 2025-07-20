@@ -25,6 +25,11 @@ const isLoaded = ref(false);
 const onImageLoaded = () => {
   isLoaded.value = true;
 };
+
+const isOwnerImgLoaded = ref(false);
+const onOwnerImgLoaded = () => {
+  isOwnerImgLoaded.value = true;
+};
 </script>
 
 <template>
@@ -57,11 +62,30 @@ const onImageLoaded = () => {
     <!-- 실제 콘텐츠 -->
     <template v-else>
       <!-- 개설자 -->
-      <div class="d-flex align-items-center gap-2 px-3 pt-3">
-        <img :src="ownerImg" loading="lazy" class="owner-img" alt="owner" />
+      <div class="d-flex align-items-center gap-2 px-3 pt-3 position-relative" style="height: 24px">
+        <div class="owner-img-wrapper position-relative" style="width: 24px; height: 24px">
+          <!-- Skeleton -->
+          <SkeletonBox
+            v-if="!isOwnerImgLoaded"
+            width="24px"
+            height="24px"
+            :borderRadius="'50%'"
+            class="position-absolute top-0 start-0"
+          />
+
+          <!-- 실제 이미지 -->
+          <img
+            :src="ownerImg"
+            loading="lazy"
+            class="owner-img position-absolute top-0 start-0"
+            :class="{ 'fade-in': isOwnerImgLoaded }"
+            @load="onOwnerImgLoaded"
+          />
+        </div>
+
+        <!-- 개설자 이름 -->
         <span class="small fw-semibold text-muted">{{ owner }}</span>
       </div>
-
       <!-- 메인 이미지 -->
       <div class="position-relative pt-3">
         <div class="img-wrapper mx-3 rounded-4 overflow-hidden position-relative">
@@ -101,8 +125,13 @@ const onImageLoaded = () => {
     height: 24px;
     border-radius: 50%;
     object-fit: cover;
-  }
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 
+    &.fade-in {
+      opacity: 1;
+    }
+  }
   .img-wrapper {
     border-radius: 0.75rem;
     overflow: hidden;

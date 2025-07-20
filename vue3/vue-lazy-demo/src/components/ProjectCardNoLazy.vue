@@ -22,6 +22,11 @@ const isLiked = ref(false);
 const toggleLike = () => (isLiked.value = !isLiked.value);
 
 const isImageLoaded = ref(false);
+
+const isOwnerImgLoaded = ref(false);
+const onOwnerImgLoaded = () => {
+  isOwnerImgLoaded.value = true;
+};
 </script>
 
 <template>
@@ -57,8 +62,25 @@ const isImageLoaded = ref(false);
     <!-- ✅ 로딩 완료 -->
     <template v-else>
       <!-- 프로핌 영역 -->
-      <div class="d-flex align-items-center gap-2 px-3 pt-3">
-        <img :src="ownerImg" class="owner-img" alt="owner" />
+      <div class="d-flex align-items-center gap-2 px-3 pt-3" style="height: 24px">
+        <div class="owner-img-wrapper position-relative" style="width: 24px; height: 24px">
+          <!-- Skeleton -->
+          <SkeletonBox
+            v-if="!isOwnerImgLoaded"
+            width="24px"
+            height="24px"
+            :borderRadius="'50%'"
+            class="position-absolute top-0 start-0"
+          />
+
+          <!-- 프로필 이미지 -->
+          <img
+            :src="ownerImg"
+            class="owner-img position-absolute top-0 start-0"
+            :class="{ 'fade-in': isOwnerImgLoaded }"
+            @load="onOwnerImgLoaded"
+          />
+        </div>
         <span class="small fw-semibold text-muted">{{ owner }}</span>
       </div>
 
@@ -105,6 +127,12 @@ const isImageLoaded = ref(false);
     height: 24px;
     border-radius: 50%;
     object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+
+    &.fade-in {
+      opacity: 1;
+    }
   }
 
   .img-wrapper {
